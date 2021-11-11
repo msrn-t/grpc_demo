@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package employee;
+option go_package = "employee/pb";
+
+message Employee {
+    string id = 1;
+    string name = 2;
+}
+
+message EmployeeInput {
+    string id = 1;
+    string name = 2;
+}
+
+message AddEmployeeRequest {
+    EmployeeInput employeeInput = 1;
+}
+
+message AddEmployeeResponse {
+    Employee employee = 1;
+}
+
+message ReadEmployeeRequest {
+    string id = 1;
+}
+
+message ReadEmployeeResponse {
+    Employee employee = 1;
+}
+
+message UpdateEmployeeRequest {
+    string id = 1;
+    EmployeeInput employeeInput = 2;
+}
+
+message UpdateEmployeeResponse {
+    Employee employee = 1;
+}
+
+message DeleteEmployeeResponse {
+    string id = 1;
+}
+
+message DeleteEmployeeRequest {
+    string id = 1;
+}
+
+message ListEmployeeRequest {
+
+}
+
+message ListEmployeeResponse {
+    Employee employee = 1;
+}
+
+service EmployeeService {
+    rpc AddEmployee(AddEmployeeRequest) returns(AddEmployeeResponse);
+    rpc ReadEmployee(ReadEmployeeRequest) returns(ReadEmployeeResponse);
+    rpc UpdateEmployee(UpdateEmployeeRequest) returns(UpdateEmployeeResponse);
+    rpc DeleteEmployee(DeleteEmployeeRequest) returns(DeleteEmployeeResponse);
+    rpc ListEmployee(ListEmployeeRequest) returns(ListEmployeeResponse);
+}
